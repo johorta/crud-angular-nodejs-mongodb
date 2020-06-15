@@ -7,7 +7,12 @@ empleadoCtrl.getEmpleados = async(req, res) => {
 };
 
 empleadoCtrl.createEmpleado = async(req, res) => {
-    const empleado = new Empleado(req.body);
+    const empleado = new Empleado({
+        nombre: req.body.nombre,
+        posicion: req.body.posicion,
+        oficina: req.body.oficina,
+        sueldo: req.body.sueldo
+    });
     await empleado.save();
     console.log(req.body);
     res.json({
